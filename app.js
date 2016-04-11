@@ -304,7 +304,7 @@ app.post('/reset/:token', function(req, res, next) {
                 text: 'Hello,\n\n' +
                 'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
             };
-            smtpTransport.sendMail(mailOptions, function(err) {
+            transporter.sendMail(mailOptions, function(err) {
                 req.flash('success', 'Success! Your password has been changed.');
                 done(err);
             });
