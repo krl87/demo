@@ -1,0 +1,28 @@
+<%- include partials/header.ejs %>
+
+<main class="container">
+    <h1>Recover Password</h1>
+
+    <% if (messages.length > 0) { %>
+    <div class="alert alert-danger"><%= messages %></div>
+    <% } %>
+
+    <form method="post">
+        <fieldset class="form-group">
+            <label for="email" class="col-sm-2">Email: *</label>
+            <input name="email" id="email" type="text" required />
+        </fieldset>
+
+        <button class="btn btn-primary col-sm-offset-2" type="submit">Recover Password</button>
+
+        <hr />
+        <!--add forgot password link-->
+        Forgot your password? <a href="/auth/login" title="Login">Login</a></br>
+
+        Need access?  <a href="/auth/register" title="Register">Register</a>
+
+    </form>
+
+</main>
+
+<%- include partials/footer.ejs %>
