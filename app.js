@@ -134,7 +134,7 @@ app.use(passport.session());
 //routes (keep all routes?)
 app.get('/', function (req, res, next) {
     res.render('index', {
-        title: 'Comp2106 Forgot Password Tutorial by Adam, Kayley, Mackenzie and Michele'
+        title: 'Comp2106 Forgot Password Tutorial'
     });
 });
 
@@ -222,17 +222,17 @@ app.post('/forgot', function (req, res, next) {
        },
        function(token, user, done) {
            var options = {
-               service: 'SendGrind',
+               service: 'Mailgun',
                auth: {
-                   user: 'comp2106',
-                   pass: 'students16'
+                   user: 'postmaster@Sandbox65b418bcf76c4a5e909aedb7b6e87b45.mailgun.org',
+                   pass: '847f704c64e240d0f6cc29966c6f03ab'
                }
            };
            var transporter = nodemailer.createTransport(smtpTransport(options))
 
            var mailOptions = {
                to: user.email,
-               from: 'comp2106@sendgrid.com',
+               from: 'postmaster@Sandbox65b418bcf76c4a5e909aedb7b6e87b45.mailgun.org',
                subject: 'Node.js Password Reset',
                text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
