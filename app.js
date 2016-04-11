@@ -268,10 +268,13 @@ app.get('/reset/:token', function (req, res, next) {
 
 
 //get handler for reset token
-app.post('/reset/:token', function(req, res, next) {
+app.post('/reset/:token', function (req, res, next) {
     async.waterfall([
-        function(done) {
-            User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+        function (done) {
+            User.findOne({
+                resetPasswordToken: req.params.token,
+                resetPasswordExpires: {$gt: Date.now()}
+            }, function (err, user) {
                 if (!user) {
                     req.flash('error', 'Password reset token is invalid or has expired.');
                     return res.redirect('back');
@@ -281,14 +284,14 @@ app.post('/reset/:token', function(req, res, next) {
                 user.resetPasswordToken = undefined;
                 user.resetPasswordExpires = undefined;
 
-                user.save(function(err) {
-                    req.logIn(user, function(err) {
+                user.save(function (err) {
+                    req.logIn(user, function (err) {
                         done(err, user);
                     });
                 });
             });
         },
-        function (token, user, done) {
+        function (user, done) {
             var options = {
                 service: 'Mailgun',
                 auth: {
@@ -305,12 +308,12 @@ app.post('/reset/:token', function(req, res, next) {
                 text: 'Hello,\n\n' +
                 'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
             };
-            transporter.sendMail(mailOptions, function(err) {
+            transporter.sendMail(mailOptions, function (err) {
                 req.flash('success', 'Success! Your password has been changed.');
                 done(err, 'done');
             });
         }
-    ], function(err) {
+    ], function (err) {
         res.redirect('/');
     });
 });
