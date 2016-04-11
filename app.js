@@ -306,7 +306,6 @@ app.post('/reset/:token', function(req, res, next) {
             };
             transporter.sendMail(mailOptions, function(err) {
                 req.flash('success', 'Success! Your password has been changed.');
-                done(err);
             });
         }
     ], function(err) {
