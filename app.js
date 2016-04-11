@@ -222,9 +222,9 @@ app.post('/forgot', function (req, res, next) {
        },
        function(token, user, done) {
            var options = {
-               service: 'Mailgun',
+               service: 'SendGrind',
                auth: {
-                   user: 'postmaster@Sandbox65b418bcf76c4a5e909aedb7b6e87b45.mailgun.org',
+                   user: 'comp2106',
                    pass: 'students16'
                }
            };
@@ -232,7 +232,7 @@ app.post('/forgot', function (req, res, next) {
 
            var mailOptions = {
                to: user.email,
-               from: 'postmaster@Sandbox65b418bcf76c4a5e909aedb7b6e87b45.mailgun.org',
+               from: 'comp2106@sendgrid.com',
                subject: 'Node.js Password Reset',
                text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
