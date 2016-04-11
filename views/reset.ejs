@@ -1,0 +1,28 @@
+<%- include partials/header.ejs %>
+
+<main class="container">
+    <h1>Reset Password</h1>
+
+    <form method="post">
+        <fieldset class="form-group">
+            <label for="password" class="col-sm-2">New Password: *</label>
+            <input name="password" id="password" type="password" required />
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="confirm" class="col-sm-2">Confirm Password: *</label>
+            <input name="confirm" id="confirm" type="password" required />
+        </fieldset>
+
+        <button class="btn btn-primary col-sm-offset-2">Update Password</button>
+
+        <hr />
+        <!--add forgot password link-->
+        Remembered your password? <a href="/login" title="Login">Login</a></br>
+
+        Need access?  <a href="/register" title="Register">Register</a>
+
+    </form>
+
+</main>
+
+<%- include partials/footer.ejs %>
