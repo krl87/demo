@@ -22,7 +22,7 @@ var crypto = require('crypto');
 
 var app = express();
 
-// 7) set up local strategy?
+// (7) set up local strategy
 
 passport.use(new LocalStrategy(function (username, password, done) {
     User.findOne({username: username}, function (err, user) {
@@ -198,6 +198,7 @@ app.get('/forgot', function (req, res, next) {
     });
 });
 
+//forgot post handler
 app.post('/forgot', function (req, res, next) {
     async.waterfall([
         function (done) {
@@ -306,6 +307,7 @@ app.post('/reset/:token', function(req, res, next) {
             };
             transporter.sendMail(mailOptions, function(err) {
                 req.flash('success', 'Success! Your password has been changed.');
+                done(err, 'done');
             });
         }
     ], function(err) {
