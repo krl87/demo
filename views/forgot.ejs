@@ -3,10 +3,6 @@
 <main class="container">
     <h1>Recover Password</h1>
 
-    <% if (messages.length > 0) { %>
-    <div class="alert alert-danger"><%= messages %></div>
-    <% } %>
-
     <form method="post">
         <fieldset class="form-group">
             <label for="email" class="col-sm-2">Email: *</label>
@@ -17,9 +13,9 @@
 
         <hr />
         <!--add forgot password link-->
-        Forgot your password? <a href="/auth/login" title="Login">Login</a></br>
+        Forgot your password? <a href="/login" title="Login">Login</a></br>
 
-        Need access?  <a href="/auth/register" title="Register">Register</a>
+        Need access?  <a href="/signup" title="Signup">Signup</a>
 
     </form>
 
